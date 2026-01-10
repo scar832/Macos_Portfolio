@@ -39,25 +39,43 @@ const dockApps = [
     {
         id: "finder",
         name: "Portfolio", // was "Finder"
-        icon: "finder.png",
+        icon: "finder4.png",
+        canOpen: true,
+    },
+    {
+        id: "figma",
+        name: "Designs", // was "Figma"
+        icon: "figma2.png",
+        canOpen: true,
+    },
+    {
+        id: "vscode",
+        name: "Code", // was "Figma"
+        icon: "vscode.png",
         canOpen: true,
     },
     {
         id: "safari",
         name: "Articles", // was "Safari"
-        icon: "safari.png",
+        icon: "safari2.png",
         canOpen: true,
     },
     {
         id: "photos",
         name: "Gallery", // was "Photos"
-        icon: "photos.png",
+        icon: "gallery2.png",
+        canOpen: true,
+    },
+    {
+        id: "facetime",
+        name: "Facetime", // was "Facetime"
+        icon: "facetime2.png",
         canOpen: true,
     },
     {
         id: "contact",
         name: "Contact", // or "Get in touch"
-        icon: "contact.png",
+        icon: "contact2.png",
         canOpen: true,
     },
     {
