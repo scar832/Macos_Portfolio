@@ -119,6 +119,10 @@ const blogPosts = [
 
 const techStack = [
     {
+        category: "Design",
+        items: ["UI UX (Figma AdobeXD)"],
+    },
+    {
         category: "Frontend",
         items: ["React.js", "TypeScript"],
     },

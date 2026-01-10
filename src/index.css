@@ -17,6 +17,13 @@ body {
     --font-georama: "Georama", sans-serif;
     --font-roboto: "Roboto Mono", monospace;
     --breakpoint-3xl: 1920px;
+
+    --animation-pulse-soft: pulse-soft 2s infinite ease-in-out;
+
+    @keyframes pulse-soft {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+    }
 }
 
 @utility flex-center {
@@ -178,49 +185,33 @@ body {
     }
 
     #terminal {
-        @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+        @apply w-2xl absolute top-32 left-1/12 overflow-hidden rounded-xl;
+        @apply bg-slate-950/25 backdrop-blur-2xl backdrop-saturate-150; /* Darker glass for better contrast */
+        @apply border border-white/20 shadow-2xl;
 
-        h2 {
-            @apply font-bold text-sm text-center w-full;
+        .terminal-header {
+            @apply flex items-center h-9 px-4 bg-white/10 border-b border-white/5;
         }
 
-        .techstack {
-            @apply text-sm font-roboto p-5;
-
-            .label {
-                @apply flex items-center ms-10 mt-7;
-            }
-
-            .content {
-                @apply py-5 my-5 border-y border-dashed space-y-1;
-
-                li {
-                    .check {
-                        @apply text-[#00A154] w-5;
-                    }
-
-                    h3 {
-                        @apply font-semibold text-[#00A154] w-32 ms-5;
-                    }
-
-                    ul {
-                        @apply flex items-center gap-3;
-                    }
-                }
-            }
-
-            .footnote {
-                @apply text-[#00A154] space-y-1;
-
-                p {
-                    @apply flex items-center;
-
-                    svg {
-                        @apply w-5 me-5;
-                    }
-                }
-            }
+        .terminal-body {
+            @apply p-6 font-roboto text-sm flex gap-8;
         }
+
+        .scanlines {
+            @apply pointer-events-none absolute inset-0 z-50;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.05) 50%),
+            linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 4px, 3px 100%;
+        }
+    }
+
+    @keyframes pulse-soft {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+    }
+
+    .animate-pulse-soft {
+        animation: pulse-soft 1s infinite ease-in-out;
     }
 
     #contact {

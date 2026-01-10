@@ -40,7 +40,7 @@ const WindowWrapper = (Component, windowKey) => {
                 style={{ zIndex}}
                 className="absolute"
             >
-                <Component {...props} />
+                <Component {...props} isOpen={isOpen} />
             </section>
         )
     }
