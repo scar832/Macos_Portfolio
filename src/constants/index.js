@@ -98,7 +98,7 @@ const blogPosts = [
         date: "Sep 2, 2025",
         title:
             "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-        image: "/images/blog1.png",
+        image: "/images/extensions.png",
         link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
     },
     {
