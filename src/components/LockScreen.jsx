@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
-import { ChevronUp, Flashlight, Camera, Lock } from 'lucide-react';
+import { ChevronUp, Flashlight, Camera, Lock, Play, SkipBack, SkipForward, } from 'lucide-react';
 
 const LockScreen = ({ onUnlock }) => {
     const screenRef = useRef(null);
@@ -55,7 +55,7 @@ const LockScreen = ({ onUnlock }) => {
         >
             {/* Top: Status & Clock */}
             <div className="flex flex-col items-center gap-2 mt-10">
-                <div className="flex items-center gap-2 text-white/60 mb-2">
+                <div className="flex items-center gap-2 text-white/60 mb-2 opacity-50">
                     <Lock size={14} />
                     <span className="text-xs font-semibold uppercase tracking-widest">Encrypted Session</span>
                 </div>
@@ -68,22 +68,46 @@ const LockScreen = ({ onUnlock }) => {
             </div>
 
             {/* Middle: Notifications / Centerpiece */}
-            <div className="w-full max-w-md px-6 space-y-4">
+            <div className="w-full max-w-md px-6 space-y-6">
+                {/* 1. The Curly Signature */}
+                <div className="text-center animate-in fade-in slide-in-from-bottom-5 duration-1000">
+                    <h2 className="font-['Dancing_Script'] text-4xl text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        Joel's Portfolio
+                    </h2>
+                </div>
                 <div className="p-4 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-xl animate-in fade-in slide-in-from-bottom-10 duration-1000">
                     <div className="flex gap-3">
                         <div className="size-10 bg-blue-500 rounded-xl flex-center shadow-lg">
-                            <span className="text-white font-bold text-xs">GF</span>
+                            <span className="text-white font-bold text-xs">W</span>
                         </div>
                         <div className="flex-1">
                             <div className="flex justify-between items-center">
-                                <span className="text-white font-bold text-sm">GraceFactor 2026</span>
+                                <span className="text-white font-bold text-sm">Welcome to my portfolio</span>
                                 <span className="text-white/40 text-[10px]">Just now</span>
                             </div>
-                            <p className="text-white/70 text-xs mt-1">System ready. All tech stacks have been deployed successfully.</p>
+                            <p className="text-white/70 text-xs mt-1">System ready. All tech stacks have been deployed successfully. Explore...</p>
+                        </div>
+                    </div>
+                </div>
+                {/* Media Player Widget */}
+                <div className="p-4">
+                    <div className="flex items-center gap-4">
+                        <div className="size-10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl animate-pulse shadow-inner" />
+                        <div className="flex-1 overflow-hidden">
+                            <p className="text-white text-sm font-bold truncate">Creative Engineering</p>
+                            <p className="text-white/50 text-xs truncate">Joel — Portfolio Mix</p>
+                            <div className="mt-3 w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div className="h-full w-1/3 bg-white/60" />
+                            </div>
+                        </div>
+                        <div className="flex gap-2 text-white">
+                            <Play size={24} fill="white" />
                         </div>
                     </div>
                 </div>
             </div>
+
+
 
             {/* Bottom: Quick Actions & Swipe Bar */}
             <div className="w-full px-12 flex justify-between items-end">
@@ -94,7 +118,7 @@ const LockScreen = ({ onUnlock }) => {
                 <div className="flex flex-col items-center gap-4">
                     <div className="flex flex-col items-center gap-1 animate-bounce opacity-50">
                         <ChevronUp size={20} className="text-white" />
-                        <span className="text-[10px] text-white font-bold uppercase tracking-[0.2em]">Swipe Up</span>
+                        <span className="text-[10px] text-white font-bold uppercase tracking-[0.2em]">Swipe Up To Open</span>
                     </div>
                     {/* Home Indicator */}
                     <div className="w-36 h-1.5 bg-white/30 rounded-full" />

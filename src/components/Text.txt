@@ -1,0 +1,153 @@
+import React, { useRef, useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/Draggable';
+import {
+    ChevronUp, Play, SkipBack, SkipForward,
+    Lock, Check, Flashlight, Camera
+} from 'lucide-react';
+
+// Register GSAP Plugin for the swipe gesture
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(Draggable);
+}
+
+const LockScreen = ({ onUnlock }) => {
+    const screenRef = useRef(null);
+    const [time, setTime] = useState(new Date());
+
+    // Update clock every second
+    useEffect(() => {
+        const timer = setInterval(() => setTime(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    // Swipe-to-unlock Logic
+    useEffect(() => {
+        const el = screenRef.current;
+        if (!el) return;
+
+        const draggable = Draggable.create(el, {
+            type: "y",
+            onDrag: function() {
+                // Dim and blur out as the user swipes up
+                const progress = Math.min(Math.abs(this.y) / 400, 1);
+                gsap.set(el, {
+                    opacity: 1 - progress,
+                    filter: `blur(${progress * 20}px)`
+                });
+            },
+            onRelease: function() {
+                // If swiped up more than 150px, finish the unlock
+                if (this.y < -150) {
+                    gsap.to(el, {
+                        y: -window.innerHeight,
+                        opacity: 0,
+                        duration: 0.6,
+                        ease: "power4.in",
+                        onComplete: onUnlock
+                    });
+                } else {
+                    // Snap back with a bounce
+                    gsap.to(el, {
+                        y: 0,
+                        opacity: 1,
+                        filter: "blur(0px)",
+                        duration: 0.5,
+                        ease: "back.out(1.7)"
+                    });
+                }
+            }
+        });
+        return () => draggable[0].kill();
+    }, [onUnlock]);
+
+    return (
+        <section
+            ref={screenRef}
+            className="fixed inset-0 z-[9999] flex flex-col items-center justify-between py-16 select-none"
+            style={{
+                background: "rgba(0, 0, 0, 0.25)",
+                backdropFilter: "blur(60px) saturate(160%)",
+            }}
+        >
+            {/* 1. TOP SECTION: Status & Clock */}
+            <div className="flex flex-col items-center mt-10 text-white">
+                <div className="flex items-center gap-2 opacity-50 mb-3">
+                    <Lock size={12} />
+                    <span className="text-[10px] uppercase font-bold tracking-[0.4em]">Encrypted Session</span>
+                </div>
+                <h1 className="text-8xl font-light tracking-tighter drop-shadow-2xl">
+                    {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
+                </h1>
+                <p className="text-lg font-medium opacity-80">
+                    {time.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' })}
+                </p>
+            </div>
+
+            {/* 2. CENTER SECTION: Signature & Widgets */}
+            <div className="w-full max-w-sm space-y-6 px-6">
+
+                {/* Curly Signature */}
+                <div className="text-center animate-in fade-in duration-1000">
+                    <h2 className="font-['Dancing_Script'] text-5xl text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                        Joel's Portfolio
+                    </h2>
+                </div>
+
+                {/* Media Player Widget */}
+                <div className="p-4 bg-white/10 backdrop-blur-2xl rounded-[2.5rem] border border-white/20 shadow-2xl">
+                    <div className="flex items-center gap-4">
+                        <div className="size-14 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl animate-pulse shadow-inner" />
+                        <div className="flex-1 overflow-hidden">
+                            <p className="text-white text-sm font-bold truncate">Creative Engineering</p>
+                            <p className="text-white/50 text-xs truncate">Joel — Portfolio Mix</p>
+                            <div className="mt-3 w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                <div className="h-full w-1/3 bg-white/60" />
+                            </div>
+                        </div>
+                        <div className="flex gap-2 text-white">
+                            <Play size={24} fill="white" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* GraceFactor Notification */}
+                <div className="p-4 bg-black/30 backdrop-blur-xl rounded-3xl border border-white/5 shadow-lg scale-95 opacity-80">
+                    <div className="flex gap-3 items-center">
+                        <div className="size-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                            <Check size={16} className="text-green-400" />
+                        </div>
+                        <div>
+                            <p className="text-white/80 text-[11px] font-bold">GraceFactor 2026</p>
+                            <p className="text-white/40 text-[10px]">System Deployed Successfully</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 3. BOTTOM SECTION: Quick Actions & Swipe Bar */}
+            <div className="w-full px-12 flex justify-between items-end">
+                {/* Flashlight Button */}
+                <button className="size-12 rounded-full bg-white/10 backdrop-blur-3xl border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-90">
+                    <Flashlight size={20} />
+                </button>
+
+                {/* Swipe Indicator */}
+                <div className="flex flex-col items-center gap-4">
+                    <div className="flex flex-col items-center gap-1 animate-bounce opacity-40">
+                        <ChevronUp size={24} className="text-white" />
+                        <span className="text-[9px] text-white font-black uppercase tracking-[0.4em]">Swipe Up to Open</span>
+                    </div>
+                    <div className="w-36 h-1.5 bg-white/30 rounded-full" />
+                </div>
+
+                {/* Camera Button */}
+                <button className="size-12 rounded-full bg-white/10 backdrop-blur-3xl border border-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all active:scale-90">
+                    <Camera size={20} />
+                </button>
+            </div>
+        </section>
+    );
+};
+
+export default LockScreen;

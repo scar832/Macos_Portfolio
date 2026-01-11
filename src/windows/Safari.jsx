@@ -7,7 +7,7 @@ const Safari = () => {
     const [url, setUrl] = useState("");
 
     const favorites = [
-        { name: "GitHub", url: "https://github.com/scar832/", icon: "/icons/tech/github2.png" },
+        { name: "GitHub", url: "https://github.com/scar832/", icon: "/icons/tech/github.png" },
         { name: "LinkedIn", url: "https://linkedin.com", icon: "/icons/tech/linkedin.png" },
         { name: "Twitter", url: "https://twitter.com", icon: "/icons/tech/twitter.png" },
         { name: "Dribbble", url: "https://dribbble.com", icon: "/icons/tech/dribbble.png" },
