@@ -4,7 +4,7 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import {
     Files, Search, GitBranch, Play, LayoutGrid, Settings,
     FileText, ChevronDown, ChevronRight, FolderOpen,
-    CheckCheck, Info
+    CheckCheck, Info, Bell, Terminal, GitFork,
 } from "lucide-react";
 
 const Vscode = () => {
@@ -22,7 +22,7 @@ const Vscode = () => {
     return (
         <>
             {/* Header / Title Bar */}
-            <div id="window-header" className="!bg-transparent !border-b-0">
+            <div id="window-header" className="bg-transparent! border-b-0!">
                 <WindowControls target="vscode" />
                 <div className="flex-1 flex justify-center">
                     <div className="bg-black/20 px-10 py-1 rounded-md text-[11px] text-white/40 border border-white/5">
@@ -35,8 +35,9 @@ const Vscode = () => {
                 {/* ACTIVITY BAR */}
                 <div className="activity-bar w-12 flex flex-col items-center py-4 gap-5 bg-black/20 border-r border-white/5">
                     <Files size={20} className="text-white border-l-2 border-white pl-1" />
+                    <Terminal className="text-white/30 hover:text-white cursor-pointer" />
                     <Search size={20} className="text-white/30 hover:text-white cursor-pointer" />
-                    <GitBranch size={20} className="text-white/30" />
+                    <GitFork size={20} className="text-white/30"/>
                     <Play size={20} className="text-white/30" />
                     <LayoutGrid size={20} className="text-white/30 hover:text-white cursor-pointer" />
                     {/* Gemini AI Icon */}
@@ -53,8 +54,10 @@ const Vscode = () => {
                     <div className="flex justify-between items-center px-4 py-2 uppercase text-[9px] font-bold tracking-widest text-white/40">
                         Explorer
                     </div>
-
-                    {/* Hierarchy based on image_5da7ac.png */}
+                    <div className="flex items-center gap-1 px-3 py-1 bg-white/5 text-white/90 text-[11px] font-bold">
+                        <ChevronDown size={14} />
+                        <span>MacOs Portfolio</span>
+                    </div>
                     <Folder name="public" isOpen={expanded.public} onToggle={() => toggle('public')}>
                         <File name="files" isFolder />
                         <File name="icons" isFolder />
@@ -117,8 +120,34 @@ const Vscode = () => {
                             <span className="badge">Liquid Glass UI</span>
                         </div>
 
-                        <h1>MacOs Portfolio</h1>
+                        <h1 className="flex gap-3">
+                            MacOs Portfolio
+                            <span className="text-xs h-[23px] mt-3 font-mono font-normal bg-green-500/20 text-green-400 px-2 py-1 rounded">v1.0.4</span>
+                        </h1>
                         <p className="text-xs">A premium OS-style portfolio illustration built with a "Liquid Glass" design system. This project simulates a high-end macOS-inspired environment in the browser.</p>
+
+                        <h2 className="text-blue-400 flex items-center gap-2">
+                            <Info size={18} /> Overview
+                        </h2>
+                        <div className="grid grid-cols-2 gap-4 mt-4">
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
+                                <h4 className="text-white font-bold mb-2 text-sm">Frontend Architecture</h4>
+                                <p className="text-xs opacity-60">High-performance React components with GSAP orchestration.</p>
+                            </div>
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-colors">
+                                <h4 className="text-white font-bold mb-2 text-sm">System Design</h4>
+                                <p className="text-xs opacity-60">Optimized data stores and cross-platform mobile logic.</p>
+                            </div>
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 transition-colors">
+                                <h4 className="text-white font-bold mb-2 text-sm">Design Sense</h4>
+                                <p className="text-xs opacity-60">Custom Tailwind v4 backdrop-filters and saturation layers for authentic glassmorphism[To mimic a liquid glass UI system.</p>
+                            </div>
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-colors">
+                                <h4 className="text-white font-bold mb-2 text-sm">Window Logic (HOC)</h4>
+                                <p className="text-xs opacity-60">A robust Higher-Order Component system managing window focus, z-index, and GSAP Draggable constraints.</p>
+                            </div>
+
+                        </div>
 
                         <h2>🚀 Features</h2>
                         <ul className="list-disc ml-5 space-y-2 text-xs opacity-80">
@@ -129,7 +158,7 @@ const Vscode = () => {
                         </ul>
 
                         <h2>🛠 Tech Stack</h2>
-                        <p className="text-xs">Built with <code>React</code>, styled with <code>TailwindCSS</code>, and powered by <code>GSAP</code> for silky-smooth animations. Backend logic handled via <code>Node.js</code>.</p>
+                        <p className="text-xs">Built with <code>React</code>, styled with <code>TailwindCSS</code>, and powered by <code>GSAP</code> for silky-smooth animations.</p>
 
                         <h2 className="text-lg font-bold text-blue-400 mt-10 mb-4 font-roboto">Development</h2>
                         <div className="p-4 bg-black/40 font-roboto rounded-lg border border-white/5 text-green-400">
@@ -144,6 +173,28 @@ const Vscode = () => {
                         <h2>📬 Contact</h2>
                         <p>Feel free to reach out via the <strong>Messages</strong> app or find me on <strong>LinkedIn</strong>.</p>
                     </div>
+                </div>
+
+            </div>
+            <div className="h-6 border-t border-white/5 flex items-center justify-between px-3 text-[10px] text-white">
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-1 hover:bg-white/10 px-1 cursor-pointer">
+                        <GitBranch size={12} />
+                        <span>main*</span>
+                    </div>
+                    <div className="flex items-center gap-1 hover:bg-white/10 px-1">
+                        <Info size={12} />
+                        <span>0 Errors</span>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <span>Spaces: 4</span>
+                    <span>UTF-8</span>
+                    <div className="flex items-center gap-1">
+                        <CheckCheck size={12} />
+                        <span>Prettier</span>
+                    </div>
+                    <Bell size={12} />
                 </div>
             </div>
         </>

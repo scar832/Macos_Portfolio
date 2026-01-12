@@ -14,6 +14,13 @@ const Figma = () => {
 
     const projects = [
         {
+            title: "Spice Brand Website",
+            category: "Web App",
+            year: "2025",
+            img: "/images/spicedesign.png",
+            layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
+        },
+        {
             title: "FinTech App Redesign",
             category: "Mobile Design",
             year: "2024",
@@ -26,7 +33,7 @@ const Figma = () => {
             year: "2023",
             img: "/images/design2.png",
             layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
-        }
+        },
     ];
 
     return (
@@ -113,7 +120,7 @@ const Figma = () => {
                         </div>
 
                         {/* THE DESIGN IMAGE */}
-                        <div className="bg-white rounded-lg shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden min-w-[375px] min-h-[600px] border border-white/10">
+                        <div className="bg-white rounded-lg shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden min-w-[375px] border border-white/10">
                             <img
                                 src={projects[activeProject].img}
                                 alt="Work Showcase"
