@@ -205,7 +205,7 @@ const Vscode = () => {
 
 const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
     <div className={`${nested ? 'ml-3' : ''}`}>
-        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[12px] text-white">
+        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[12.5px] text-white">
             {isOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
             <FolderOpen size={12} className="text-blue-400" />
             <span>{name}</span>
@@ -215,7 +215,7 @@ const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
 );
 
 const File = ({ name, active = false, isFolder = false, isImage = false, isSvg = false, className = "" }) => (
-    <div className={`flex items-center gap-2 px-7 py-0.5 text-[11px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
+    <div className={`flex items-center gap-2 px-7 py-0.5 text-[11.5px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
         {isFolder ? <FolderOpen size={12} className="text-slate-400" /> : <FileText size={12} className={active ? "text-orange-400" : "text-blue-300"} />}
         <span className="truncate">{name}</span>
     </div>
