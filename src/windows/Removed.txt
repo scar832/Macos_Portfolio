@@ -22,6 +22,7 @@ import {blogPosts} from "#constants/index.js";
                                     />
 
                                     {/* Glass Overlay for Text */}
+
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5">
                                         <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest mb-1">{post.date}</p>
                                         <h3 className={`font-bold text-white leading-tight group-hover:text-blue-300 transition-colors
@@ -39,3 +40,278 @@ import {blogPosts} from "#constants/index.js";
                             ))}
                         </div>
                     </div>
+
+
+import { WindowControls } from "#components";
+import WindowWrapper from "#hoc/WindowWrapper.jsx";
+import {
+    Files, Search, GitBranch, Play, Boxes, Settings,
+    FileText, ChevronDown, FolderOpen, Terminal as TerminalIcon,
+    Bell, CheckCheck, Info
+} from "lucide-react";
+
+const Vscode = () => {
+    return (
+        <div className="flex flex-col h-full select-none">
+            {/* 1. HEADER / BREADCRUMBS */}
+            <div id="window-header" className="!bg-[#1e1e1e]/50 !border-b-0 backdrop-blur-xl">
+                <WindowControls target="vscode" />
+                <div className="flex-1 flex justify-center items-center gap-2 text-[11px] text-white/40">
+                    <FolderOpen size={12} />
+                    <span>src</span>
+                    <span>{'>'}</span>
+                    <FileText size={12} className="text-orange-400" />
+                    <span className="text-white/70">README.md</span>
+                </div>
+            </div>
+
+            <div className="flex flex-1 overflow-hidden">
+                {/* 2. ACTIVITY BAR */}
+                <div className="activity-bar">
+                    <div className="flex flex-col items-center gap-5 w-full">
+                        <Files size={22} className="text-white border-l-2 border-white pl-1" />
+                        <Search size={22} className="text-white/30 hover:text-white/80 transition-colors" />
+                        <GitBranch size={22} className="text-white/30 hover:text-white/80 transition-colors" />
+                        <Play size={22} className="text-white/30 hover:text-white/80 transition-colors" />
+                    </div>
+                    <div className="mt-auto flex flex-col items-center gap-5 pb-4">
+                        <Settings size={20} className="text-white/30 hover:text-white/80" />
+                    </div>
+                </div>
+
+                {/* 3. SIDEBAR */}
+                <div className="sidebar hidden md:flex">
+                    <div className="flex justify-between items-center px-4 py-2">
+                        <h4 className="!p-0">Explorer</h4>
+                        <Plus size={14} className="text-white/40" />
+                    </div>
+                    <div className="mt-2">
+                        <div className="flex items-center gap-1 px-3 py-1 bg-white/5 text-white/90 text-[11px] font-bold">
+                            <ChevronDown size={14} />
+                            <span>GRACEFACTOR-2026</span>
+                        </div>
+                        <div className="mt-1">
+                            <FileItem icon={<FolderOpen size={14} className="text-blue-400" />} name="src" />
+                            <FileItem icon={<FileText size={14} className="text-orange-400" />} name="README.md" active />
+                            <FileItem icon={<FileText size={14} className="text-blue-400" />} name="Portfolio.jsx" className="ml-4" />
+                            <FileItem icon={<FileText size={14} className="text-yellow-400" />} name="Styles.css" className="ml-4" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* 4. MAIN EDITOR & TERMINAL SPLIT */}
+                <div className="flex-1 flex flex-col bg-black/20">
+                    {/* Tabs */}
+                    <div className="flex h-9 bg-black/30 items-center">
+                        <div className="h-full flex items-center gap-2 px-4 bg-[#1e1e1e] border-t border-t-blue-500 text-[11px] text-white">
+                            <FileText size={14} className="text-orange-400" />
+                            README.md
+                            <span className="ml-2 opacity-40 hover:opacity-100">×</span>
+                        </div>
+                    </div>
+
+                    {/* Editor Content Area */}
+                    <div className="flex flex-1 overflow-hidden">
+                        <div className="flex-1 readme-content custom-scrollbar">
+                            <div className="max-w-2xl">
+                                <h1 className="flex items-center gap-3">
+                                   GraceFactor 2026
+                                   <span className="text-xs font-mono font-normal bg-green-500/20 text-green-400 px-2 py-1 rounded">v1.0.4</span>
+                                </h1>
+                                <p className="text-lg text-white/60 leading-relaxed italic">
+                                    "Code is poetry, but performance is the symphony."
+                                </p>
+
+                                <h2 className="text-blue-400 flex items-center gap-2">
+                                    <Info size={18} /> Overview
+                                </h2>
+                                <p>This portfolio is a 1-to-1 simulation of my development workflow. Every window you see represents a layer of my technical expertise in <strong>Ghana's</strong> growing tech ecosystem.</p>
+
+                                <div className="grid grid-cols-2 gap-4 mt-8">
+                                    <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
+                                        <h4 className="text-white font-bold mb-2 text-sm">Frontend Architecture</h4>
+                                        <p className="text-xs opacity-60">High-performance React components with GSAP orchestration.</p>
+                                    </div>
+                                    <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-colors">
+                                        <h4 className="text-white font-bold mb-2 text-sm">System Design</h4>
+                                        <p className="text-xs opacity-60">Optimized data stores and cross-platform mobile logic.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* THE MINIMAP */}
+                        <div className="w-20 hidden lg:block bg-black/10 border-l border-white/5 opacity-30 hover:opacity-60 transition-opacity overflow-hidden select-none py-2 px-1">
+                            <div className="h-2 w-full bg-white/20 mb-1 rounded-sm" />
+                            <div className="h-2 w-3/4 bg-blue-500/20 mb-4 rounded-sm" />
+                            {[...Array(20)].map((_, i) => (
+                                <div key={i} className={`h-1 mb-1 rounded-full bg-white/10 ${i % 4 === 0 ? 'w-full' : 'w-2/3'}`} />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* 5. LIVE TERMINAL DRAWER */}
+                    <div className="h-32 bg-black/40 border-t border-white/5 p-4 font-mono text-[11px]">
+                        <div className="flex gap-4 mb-2 text-white/40 uppercase tracking-widest text-[9px] font-bold">
+                            <span className="text-white border-b border-white">Terminal</span>
+                            <span>Output</span>
+                            <span>Debug Console</span>
+                        </div>
+                        <div className="space-y-1">
+                            <p className="text-green-400">➜ <span className="text-white">gracefactor-2026</span> <span className="text-blue-400">git:(</span><span className="text-red-400">main</span><span className="text-blue-400">)</span> npm start</p>
+                            <p className="text-white/60">Compiled successfully! Local server running at http://localhost:3000</p>
+                            <p className="text-white/40 animate-pulse">_</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* 6. STATUS BAR */}
+            <div className="h-6 bg-blue-600 flex items-center justify-between px-3 text-[10px] text-white">
+                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-1 hover:bg-white/10 px-1 cursor-pointer">
+                        <GitBranch size={12} />
+                        <span>main*</span>
+                    </div>
+                    <div className="flex items-center gap-1 hover:bg-white/10 px-1">
+                        <Info size={12} />
+                        <span>0 Errors</span>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4">
+                    <span>Spaces: 4</span>
+                    <span>UTF-8</span>
+                    <div className="flex items-center gap-1">
+                        <CheckCheck size={12} />
+                        <span>Prettier</span>
+                    </div>
+                    <Bell size={12} />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const FileItem = ({ icon, name, className = "", active = false }) => (
+    <div className={`flex items-center gap-2 px-4 py-1 text-[12px] cursor-pointer transition-colors ${active ? 'bg-blue-500/20 text-white' : 'text-white/40 hover:bg-white/5'}`}>
+        <div className={className} />
+        {icon}
+        <span className="truncate">{name}</span>
+    </div>
+);
+
+const VscodeWindow = WindowWrapper(Vscode, "vscode");
+export default VscodeWindow;
+
+
+
+
+
+import React, { useState } from 'react';
+import { WindowControls } from "#components";
+import WindowWrapper from "#hoc/WindowWrapper.jsx";
+import {
+    Files, Search, GitBranch, Play, LayoutGrid, Settings,
+    FileText, ChevronDown, ChevronRight, FolderOpen,
+    CheckCheck, Info, Sparkles
+} from "lucide-react";
+
+const Vscode = () => {
+    const [expanded, setExpanded] = useState({ public: true, src: true, components: false, windows: false });
+    const toggle = (key) => setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
+
+    return (
+        <div className="flex flex-1 overflow-hidden">
+            {/* 1. ACTIVITY BAR */}
+            <div className="activity-bar">
+                <div className="flex flex-col items-center gap-5 w-full">
+                    <Files size={20} className="text-white border-l-2 border-white pl-1" />
+                    <Search size={20} className="text-white/30 hover:text-white" />
+                    <GitBranch size={20} className="text-white/30" />
+                    <Play size={20} className="text-white/30" />
+                    {/* Extensions Icon */}
+                    <LayoutGrid size={20} className="text-white/30 hover:text-white" />
+                    {/* Gemini AI Icon */}
+                    <div className="relative group cursor-pointer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-blue-400 group-hover:text-blue-300 transition-colors">
+                            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
+                        </svg>
+                    </div>
+                </div>
+                <div className="mt-auto mb-4"><Settings size={20} className="text-white/30" /></div>
+            </div>
+
+            {/* 2. SIDEBAR */}
+            <div className="sidebar overflow-y-auto">
+                <div className="flex justify-between items-center px-4 py-2 uppercase text-[9px] font-bold text-white/40">Explorer</div>
+                <Folder name="public" isOpen={expanded.public} onToggle={() => toggle('public')}>
+                   <File name="images" isFolder />
+                   <File name="macbook.png" />
+                   <File name="vite.svg" />
+                </Folder>
+                <Folder name="src" isOpen={expanded.src} onToggle={() => toggle('src')}>
+                    <Folder name="components" isOpen={expanded.components} onToggle={() => toggle('components')} nested>
+                        <File name="Dock.jsx" />
+                        <File name="Navbar.jsx" />
+                    </Folder>
+                    <Folder name="windows" isOpen={expanded.windows} onToggle={() => toggle('windows')} nested>
+                        <File name="Vscode.jsx" />
+                    </Folder>
+                    <File name="README.md" active />
+                </Folder>
+                <File name=".gitignore" className="opacity-30" />
+            </div>
+
+            {/* 3. EDITOR */}
+            <div className="editor">
+                <div className="tabs">
+                    <div className="tab">
+                        <FileText size={14} className="text-orange-400" />
+                        README.md
+                    </div>
+                </div>
+                <div className="readme-content">
+                    <ReadmeContent />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// --- UPDATED README CONTENT WITH SYSTEM CARD HOVER ---
+
+const ReadmeContent = () => (
+    <div className="max-w-3xl animate-in fade-in duration-700">
+        <h1> MacOS Portfolio</h1>
+        <p>A high-fidelity operating system simulation designed as a creative developer showcase.</p>
+
+        <h2>🚀 Core Systems</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="system-card">
+                <h4>Liquid UI System</h4>
+                <p>Custom Tailwind v4 backdrop-filters and saturation layers for authentic glassmorphism.</p>
+            </div>
+            <div className="system-card">
+                <h4>Window Logic (HOC)</h4>
+                <p>A robust Higher-Order Component system managing window focus, z-index, and GSAP Draggable constraints.</p>
+            </div>
+            <div className="system-card">
+                <h4>Boot & Lock Engine</h4>
+                <p>Transition logic from a high-blur lock screen to a fully interactive desktop environment.</p>
+            </div>
+            <div className="system-card">
+                <h4>Shell Simulation</h4>
+                <p>Terminal emulator with typewriter effects and a simulated VS Code IDE dashboard.</p>
+            </div>
+        </div>
+
+        <h2>🛠 Technical Stack</h2>
+        <p>This project leverages <code>React</code>, <code>Tailwind CSS</code>, and <code>GSAP</code> to create a seamless user experience.</p>
+
+        <div className="mt-20 border-t border-white/10 pt-10 text-center opacity-40 text-[10px]">
+            MacOS Portfolio © 2026 — Built with Georama & Roboto Mono
+        </div>
+    </div>
+);
+
+// (Folder and File helper components stay the same as previous version)

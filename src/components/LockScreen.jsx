@@ -89,22 +89,7 @@ const LockScreen = ({ onUnlock }) => {
                         </div>
                     </div>
                 </div>
-                {/* Media Player Widget */}
-                <div className="p-4">
-                    <div className="flex items-center gap-4">
-                        <div className="size-10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-xl animate-pulse shadow-inner" />
-                        <div className="flex-1 overflow-hidden">
-                            <p className="text-white text-sm font-bold truncate">Creative Engineering</p>
-                            <p className="text-white/50 text-xs truncate">Joel — Portfolio Mix</p>
-                            <div className="mt-3 w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                                <div className="h-full w-1/3 bg-white/60" />
-                            </div>
-                        </div>
-                        <div className="flex gap-2 text-white">
-                            <Play size={24} fill="white" />
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
 
