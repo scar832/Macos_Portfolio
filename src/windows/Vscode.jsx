@@ -36,12 +36,12 @@ const Vscode = () => {
                 <div className="activity-bar w-12 flex flex-col items-center py-4 gap-5 bg-black/20 border-r border-white/5">
                     <Files size={20} className="text-white border-l-2 border-white pl-1" />
                     <Terminal className="text-white/30 hover:text-white cursor-pointer" />
-                    <Search size={20} className="text-white/30 hover:text-white cursor-pointer" />
+                    <LayoutGrid size={20} className="text-white/30 hover:text-white cursor-pointer" />
+                    <Search size={20} className="text-white/30" />
                     <GitFork size={20} className="text-white/30"/>
                     <Play size={20} className="text-white/30" />
-                    <LayoutGrid size={20} className="text-white/30 hover:text-white cursor-pointer" />
                     {/* Gemini AI Icon */}
-                    <div className="relative group cursor-pointer">
+                    <div className="relative group">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-blue-400 group-hover:text-blue-300 transition-colors">
                             <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
                         </svg>

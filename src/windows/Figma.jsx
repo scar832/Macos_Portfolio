@@ -14,24 +14,51 @@ const Figma = () => {
 
     const projects = [
         {
-            title: "Spice Brand Website",
+            title: "A Simple Restaurant Website",
             category: "Web App",
             year: "2025",
-            img: "/images/spicedesign.png",
+            img: "/images/design4.png",
+            layers: ["Login Section", "Homepage", "Food slider",]
+        },
+        {
+            title: "VPN Mobile App",
+            category: "Mobile App",
+            year: "2024",
+            img: "/images/design.png",
+            layers: ["Connect", "Location",]
+        },
+        {
+            title: "Fashion Brand Website",
+            category: "Web App",
+            year: "2023",
+            img: "/images/design5.png",
+            layers: ["Products Page", "Homepage", "Footer", "Single Item"]
+        },
+        {
+            title: "Bic Store Mobile App",
+            category: "Mobile App",
+            year: "2023",
+            img: "/images/design3.png",
+            layers: ["Start Screen", "Product Screen", "Menu Component"]
+        },
+        {
+            title: "VR Showcase Website",
+            category: "Web App",
+            year: "2024",
+            img: "/images/design2.png",
+            layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
+        },{
+            title: "Music Web & Mobile App",
+            category: "Web App",
+            year: "2025",
+            img: "/images/design1.png",
             layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
         },
         {
-            title: "FinTech App Redesign",
-            category: "Mobile Design",
-            year: "2024",
-            img: "/images/design1.png",
-            layers: ["Navigation Bar", "Transaction List", "Card Component", "User Profile"]
-        },
-        {
-            title: "E-Commerce Dashboard",
+            title: "Spice Brand Website",
             category: "Web App",
-            year: "2023",
-            img: "/images/design2.png",
+            year: "2025",
+            img: "/images/design6.png",
             layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
         },
     ];
