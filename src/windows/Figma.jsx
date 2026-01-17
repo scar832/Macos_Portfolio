@@ -4,13 +4,15 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import {
     MousePointer2, Frame, Square, PenTool, Type,
     Hand, MessageSquare, ChevronDown, Eye, Lock,
-    Share2, Play, ZoomIn, Layers, Component, Grid
+    Share2, Play, ZoomIn, ZoomOut, Layers, Component, Grid, Check
 } from "lucide-react";
 
 const Figma = () => {
     // State to handle interactivity
     const [activeProject, setActiveProject] = useState(0);
     const [zoom, setZoom] = useState(100);
+    const [showZoomMenu, setShowZoomMenu] = useState(false);
+    const [notification, setNotification] = useState(null);
 
     const projects = [
         {
@@ -47,7 +49,7 @@ const Figma = () => {
             year: "2024",
             img: "/images/design2.png",
             layers: ["Sidebar Nav", "Sales Chart", "Inventory Grid", "Footer"]
-        },{
+        }, {
             title: "Music Web & Mobile App",
             category: "Web App",
             year: "2025",
@@ -63,20 +65,61 @@ const Figma = () => {
         },
     ];
 
+    // Share functionality
+    const handleShare = (e) => {
+        e.stopPropagation();
+        const designUrl = `https://figma.com/design/${projects[activeProject].title.toLowerCase().replace(/\s+/g, '-')}`;
+        navigator.clipboard.writeText(designUrl);
+        showNotification("Design link copied to clipboard!");
+    };
+
+    // Play/Prototype functionality
+    const handlePlay = (e) => {
+        e.stopPropagation();
+        showNotification("Prototype preview mode activated!");
+    };
+
+    // Zoom controls
+    const handleZoomChange = (newZoom, e) => {
+        e.stopPropagation();
+        setZoom(newZoom);
+        setShowZoomMenu(false);
+        showNotification(`Zoom: ${newZoom}%`);
+    };
+
+    const toggleZoomMenu = (e) => {
+        e.stopPropagation();
+        setShowZoomMenu(!showZoomMenu);
+    };
+
+    // Notification helper
+    const showNotification = (message) => {
+        setNotification(message);
+        setTimeout(() => setNotification(null), 2000);
+    };
+
     return (
         <div className="flex flex-col h-full select-none font-georama text-[13px] text-white">
+            {/* Notification Toast */}
+            {notification && (
+                <div className="absolute top-4 right-4 z-50 bg-slate-800 text-white px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <Check size={16} className="text-green-400" />
+                    <span className="text-sm">{notification}</span>
+                </div>
+            )}
+
             {/* 1. TOP TOOLBAR */}
             <div id="window-header" className="!bg-[#2c2c2c] !border-b-0 px-4 flex items-center h-12 gap-6">
                 <WindowControls target="figma" />
 
                 <div className="flex items-center gap-4 ml-4">
                     <MousePointer2 size={18} className="text-blue-500" />
-                    <Frame size={18} className="opacity-60 hover:opacity-100" />
-                    <Square size={18} className="opacity-60 hover:opacity-100" />
-                    <PenTool size={18} className="opacity-60 hover:opacity-100" />
-                    <Type size={18} className="opacity-60 hover:opacity-100" />
-                    <Hand size={18} className="opacity-60 hover:opacity-100" />
-                    <MessageSquare size={18} className="opacity-60 hover:opacity-100" />
+                    <Frame size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
+                    <Square size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
+                    <PenTool size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
+                    <Type size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
+                    <Hand size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
+                    <MessageSquare size={18} className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity" />
                 </div>
 
                 <div className="flex-1 flex justify-center">
@@ -85,12 +128,53 @@ const Figma = () => {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <button className="bg-blue-600 px-3 py-1 rounded text-[11px] font-bold hover:bg-blue-500 transition-colors">Share</button>
-                    <Play size={16} className="opacity-60" />
-                    <div className="flex items-center gap-1 opacity-60">
-                        <span className="text-[11px]">{zoom}%</span>
-                        <ChevronDown size={12} />
+                <div className="flex items-center gap-4" style={{ pointerEvents: 'auto' }}>
+                    <button
+                        className="bg-blue-600 px-3 py-1 rounded text-[11px] font-bold hover:bg-blue-500 transition-colors"
+                        onClick={handleShare}
+                    >
+                        Share
+                    </button>
+
+                    <Play
+                        size={16}
+                        className="opacity-60 hover:opacity-100 cursor-pointer transition-opacity"
+                        onClick={handlePlay}
+                    />
+
+                    <div className="relative">
+                        <div
+                            className="flex items-center gap-1 opacity-60 hover:opacity-100 cursor-pointer transition-opacity"
+                            onClick={toggleZoomMenu}
+                        >
+                            <span className="text-[11px]">{zoom}%</span>
+                            <ChevronDown size={12} />
+                        </div>
+
+                        {/* Zoom Dropdown Menu */}
+                        {showZoomMenu && (
+                            <div
+                                className="absolute top-8 right-0 bg-[#2c2c2c] rounded-lg shadow-xl border border-white/10 py-2 min-w-[120px] z-50"
+                                onMouseDown={(e) => e.stopPropagation()}
+                            >
+                                {[50, 75, 100, 125, 150, 200].map((zoomLevel) => (
+                                    <div
+                                        key={zoomLevel}
+                                        className={`px-4 py-2 hover:bg-white/10 cursor-pointer text-[11px] flex items-center justify-between ${zoom === zoomLevel ? 'text-blue-400' : 'text-white'
+                                            }`}
+                                        onClick={(e) => handleZoomChange(zoomLevel, e)}
+                                    >
+                                        <span>{zoomLevel}%</span>
+                                        {zoom === zoomLevel && <Check size={12} />}
+                                    </div>
+                                ))}
+                                <div className="border-t border-white/10 my-1" />
+                                <div className="px-4 py-2 text-[10px] text-white/40 flex items-center gap-2">
+                                    <ZoomIn size={12} />
+                                    <span>Scroll to zoom</span>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -115,6 +199,7 @@ const Figma = () => {
                                 key={i}
                                 onClick={() => setActiveProject(i)}
                                 className={`flex items-center gap-2 px-6 py-1.5 rounded cursor-pointer transition-colors ${activeProject === i ? 'bg-blue-500/10 text-blue-400' : 'hover:bg-white/5 opacity-60'}`}
+                                style={{ pointerEvents: 'auto' }}
                             >
                                 <Grid size={14} />
                                 <span>{p.title}</span>
@@ -140,7 +225,7 @@ const Figma = () => {
                 {/* 3. THE CANVAS (Showcase Area) */}
                 <div className="flex-1 overflow-auto bg-[#1e1e1e] relative p-20 flex justify-center items-start custom-scrollbar">
                     {/* Artboard Shell */}
-                    <div className="relative animate-in fade-in zoom-in duration-500">
+                    <div className="relative animate-in fade-in zoom-in duration-500" style={{ transform: `scale(${zoom / 100})` }}>
                         <div className="absolute -top-8 left-0 text-[11px] opacity-40 flex gap-4 uppercase font-bold tracking-tighter">
                             <span>{projects[activeProject].category}</span>
                             <span>{projects[activeProject].year}</span>

@@ -1,9 +1,9 @@
 import { Navbar, Welcome, Dock, LockScreen } from "#components";
-import {Figma, Resume, Safari, Terminal, Vscode} from "#windows";
-import {useState} from "react";
+import { Figma, Finder, Resume, Safari, Terminal, Vscode, Text, Image, Contact } from "#windows";
+import { useState } from "react";
 
 import gsap from "gsap";
-import {Draggable} from "gsap/Draggable";
+import { Draggable } from "gsap/Draggable";
 gsap.registerPlugin(Draggable);
 
 const App = () => {
@@ -19,6 +19,10 @@ const App = () => {
             <Resume />
             <Figma />
             <Vscode />
+            <Finder />
+            <Text />
+            <Image />
+            <Contact />
             {isLocked && <LockScreen onUnlock={() => setIsLocked(false)} />}
         </main>
     )
