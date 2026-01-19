@@ -250,7 +250,7 @@ const Safari = () => {
                                             <div className="size-16 bg-white/80 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-white transition-all group-hover:scale-105 backdrop-blur-md">
                                                 <img src={fav.icon} className="size-8 object-contain" alt={fav.name} />
                                             </div>
-                                            <span className="text-xs font-medium text-white">{fav.name}</span>
+                                            <span className="text-sm font-medium text-black">{fav.name}</span>
                                         </div>
                                     </a>
                                 ))}
@@ -332,9 +332,9 @@ const Safari = () => {
                                     {/* d3v.labs */}
                                     <div className="border-l-2 border-blue-600 pl-4">
                                         <h3 className="text-lg font-bold text-slate-800">UI/UX Designer & Frontend Developer</h3>
-                                        <p className="text-sm text-blue-600 font-medium mb-2">d3v.labs | 2022 - Present</p>
+                                        <p className="text-sm text-blue-600 font-medium mb-2">d3v.labs | 2019 - 2023</p>
                                         <ul className="list-disc list-inside text-slate-700 text-sm space-y-1">
-                                            <li>Designed and developed user interfaces for 15+ web applications, improving user engagement by 40%</li>
+                                            <li>Designed and developed user interfaces for 10+ web applications, improving user engagement by 40%</li>
                                             <li>Collaborated with cross-functional teams to translate business requirements into intuitive design solutions</li>
                                             <li>Implemented responsive designs using React.js, ensuring seamless experiences across all devices</li>
                                             <li>Conducted user research and usability testing to validate design decisions and iterate on prototypes</li>
@@ -344,10 +344,10 @@ const Safari = () => {
                                     {/* Previous Companies */}
                                     <div className="border-l-2 border-slate-300 pl-4">
                                         <h3 className="text-lg font-bold text-slate-800">UI/UX Designer</h3>
-                                        <p className="text-sm text-slate-600 font-medium mb-2">Various Tech Companies (3 organizations) | 2020 - 2022</p>
+                                        <p className="text-sm text-slate-600 font-medium mb-2">Various Tech Companies (3 organizations) | 2020 - 2024</p>
                                         <ul className="list-disc list-inside text-slate-700 text-sm space-y-1">
                                             <li>Created design systems and component libraries for consistent brand experiences</li>
-                                            <li>Delivered 30+ design projects ranging from mobile apps to enterprise dashboards</li>
+                                            <li>Delivered 20+ design projects ranging from mobile apps to enterprise dashboards</li>
                                             <li>Mentored junior designers on best practices and industry-standard design workflows</li>
                                             <li>Increased client satisfaction ratings by 35% through iterative design processes</li>
                                         </ul>
@@ -363,7 +363,7 @@ const Safari = () => {
                                 </h2>
                                 <div className="border-l-2 border-blue-600 pl-4">
                                     <h3 className="text-lg font-bold text-slate-800">Computer Engineering (In Progress)</h3>
-                                    <p className="text-sm text-slate-600 font-medium mb-2">University in Ghana | Expected Graduation: 2026</p>
+                                    <p className="text-sm text-slate-600 font-medium mb-2">Regional Maritime University | Expected Graduation: 2027</p>
                                     <p className="text-slate-700 text-sm">
                                         Specializing in embedded systems and hardware-software integration, with coursework in
                                         digital logic, microprocessor systems, signal processing, and real-time operating systems.

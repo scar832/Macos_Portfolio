@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { WindowControls } from "#components";
 import {
-    Mail, MapPin, Clock, Send, CheckCircle2, Copy,
+    Mail, MapPin, Phone, Send, CheckCircle2, Copy,
     Github, Linkedin, Twitter, MessageSquare, ExternalLink, Sparkles
 } from "lucide-react";
 
@@ -32,51 +32,29 @@ const Contact = () => {
     };
 
     const contactMethods = [
-
         {
-
             icon: Mail,
-
             label: "Email",
-
             value: "sedemboafo@gmail.com",
-
             action: "mailto:sedemboafo@gmail.com",
-
             color: "text-blue-600",
-
             bg: "bg-blue-50"
-
         },
-
         {
-
             icon: MapPin,
-
             label: "Location",
-
             value: "Accra, Ghana",
-
             color: "text-green-600",
-
             bg: "bg-green-50"
-
         },
-
         {
-
-            icon: Clock,
-
-            label: "Current Time",
-
+            icon: Phone,
+            label: "Work Phone",
             value: currentTime,
-
             color: "text-purple-600",
-
             bg: "bg-purple-50"
 
         }
-
     ];
 
     const socialLinks = [
@@ -91,97 +69,59 @@ const Contact = () => {
             <div id="window-header">
                 <WindowControls target="contact" />
                 <h2 className="font-bold text-[11px] uppercase tracking-widest text-slate-500 flex-1 text-center">
-                    Connect — Accra, Ghana
+                    Connect — Contact Me
                 </h2>
             </div>
 
-            <div className="flex-1 overflow-y-auto custom-scrollbar p-8 bg-black/20 backdrop-blur-3xl backdrop-saturate-150">
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-8 bg-black/40 backdrop-blur-3xl backdrop-saturate-150">
 
                 {/* 1. HERO SECTION */}
-                <div className="text-center mb-10">
+                <div className="text-center mb-13">
                     <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-700 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 border border-green-500/20">
                         <div className="size-2 bg-green-500 rounded-full animate-pulse" />
                         Available for Opportunities
                     </div>
-                    <h1 className="text-4xl font-bold text-white mb-2 drop-shadow-sm">Let's build something.</h1>
-                    <p className="text-slate-600/80 text-sm max-w-sm mx-auto leading-relaxed">
+                    <h1 className="text-4xl font-bold text-white mb-5 drop-shadow-sm">Let's build something.</h1>
+                    <p className="text-white text-sm max-w-sm mx-auto leading-relaxed">
                         I'm always excited to discuss new projects, creative ideas, or opportunities to be part of your vision.
                     </p>
                 </div>
 
                 {/* 2. CONTACT METHOD CARDS */}
                 <div className="grid grid-cols-3 gap-4 mb-10">
-                    <ContactCard icon={Mail} label="Email" value="sedemboafo@gmail.com" onCopy={() => copyToClipboard("sedemboafo@gmail.com", "Email")} isCopied={copied === "Email"} />
-                    <ContactCard icon={MapPin} label="Location" value="Accra, Ghana" />
-                    <ContactCard icon={Clock} label="Ghana Time" value={currentTime} />
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 mb-8">
 
                     {contactMethods.map((method, idx) => (
-
                         <div
-
                             key={idx}
-
                             className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/60 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
-
                         >
-
                             <div className={`${method.bg} ${method.color} w-10 h-10 rounded-lg flex items-center justify-center mb-3`}>
-
                                 <method.icon size={20} />
-
                             </div>
-
                             <p className="text-xs text-slate-500 mb-1">{method.label}</p>
-
                             <p className="text-sm font-semibold text-slate-900">{method.value}</p>
-
                             {method.action && (
-
                                 <button
-
                                     onClick={(e) => {
-
                                         e.stopPropagation();
-
                                         copyToClipboard(method.value, method.label);
-
                                     }}
-
                                     className="mt-2 text-xs text-blue-600 hover:text-blue-700 flex items-center gap-1"
-
                                     style={{ pointerEvents: 'auto' }}
-
                                 >
-
                                     {copied === method.label ? (
-
                                         <>
-
                                             <CheckCircle2 size={12} /> Copied!
-
                                         </>
-
                                     ) : (
-
                                         <>
-
                                             <Copy size={12} /> Copy
-
                                         </>
-
                                     )}
-
                                 </button>
-
                             )}
-
                         </div>
-
                     ))}
-
                 </div>
 
                 {/* 3. SOCIAL LINKS (Moved Above Form) */}

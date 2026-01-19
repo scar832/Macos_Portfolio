@@ -122,9 +122,9 @@ const Vscode = () => {
 
                         <h1 className="flex gap-3">
                             MacOs Portfolio
-                            <span className="text-xs h-[23px] mt-3 font-mono font-normal bg-green-500/20 text-green-400 px-2 py-1 rounded">v1.0.4</span>
+                            <span className="text-sm h-[23px] mt-3 font-mono font-normal bg-green-500/20 text-green-400 px-2 py-1 rounded">v1.0.4</span>
                         </h1>
-                        <p className="text-xs">A premium OS-style portfolio illustration built with a "Liquid Glass" design system. This project simulates a high-end macOS-inspired environment in the browser.</p>
+                        <p className="text-sm">A premium OS-style portfolio illustration built with a "Liquid Glass" design system. This project simulates a high-end macOS-inspired environment in the browser.</p>
 
                         <h2 className="text-blue-400 flex items-center gap-2">
                             <Info size={18} /> Overview
@@ -132,25 +132,25 @@ const Vscode = () => {
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-colors">
                                 <h4 className="text-white font-bold mb-2 text-sm">Frontend Architecture</h4>
-                                <p className="text-xs opacity-60">High-performance React components with GSAP orchestration.</p>
+                                <p className="text-sm opacity-60">High-performance React components with GSAP orchestration.</p>
                             </div>
                             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-colors">
                                 <h4 className="text-white font-bold mb-2 text-sm">System Design</h4>
-                                <p className="text-xs opacity-60">Optimized data stores and cross-platform mobile logic.</p>
+                                <p className="text-sm opacity-60">Optimized data stores and cross-platform mobile logic.</p>
                             </div>
                             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 transition-colors">
                                 <h4 className="text-white font-bold mb-2 text-sm">Design Sense</h4>
-                                <p className="text-xs opacity-60">Custom Tailwind v4 backdrop-filters and saturation layers for authentic glassmorphism[To mimic a liquid glass UI system.</p>
+                                <p className="text-sm opacity-60">Custom Tailwind v4 backdrop-filters and saturation layers for authentic glassmorphism[To mimic a liquid glass UI system.</p>
                             </div>
                             <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-colors">
                                 <h4 className="text-white font-bold mb-2 text-sm">Window Logic (HOC)</h4>
-                                <p className="text-xs opacity-60">A robust Higher-Order Component system managing window focus, z-index, and GSAP Draggable constraints.</p>
+                                <p className="text-sm opacity-60">A robust Higher-Order Component system managing window focus, z-index, and GSAP Draggable constraints.</p>
                             </div>
 
                         </div>
 
                         <h2>🚀 Features</h2>
-                        <ul className="list-disc ml-5 space-y-2 text-xs opacity-80">
+                        <ul className="list-disc ml-5 space-y-2 text-sm opacity-80">
                             <li><strong>Draggable Windows:</strong> Full GSAP implementation for window physics.</li>
                             <li><strong>Terminal Simulator:</strong> Custom typewriter engine with system fetch scripts.</li>
                             <li><strong>Interactive Safari:</strong> Bento-style discovery and favorites.</li>
@@ -158,12 +158,12 @@ const Vscode = () => {
                         </ul>
 
                         <h2>🛠 Tech Stack</h2>
-                        <p className="text-xs">Built with <code>React</code>, styled with <code>TailwindCSS</code>, and powered by <code>GSAP</code> for silky-smooth animations.</p>
+                        <p className="text-sm">Built with <code>React</code>, styled with <code>TailwindCSS</code>, and powered by <code>GSAP</code> for silky-smooth animations.</p>
 
                         <h2 className="text-lg font-bold text-blue-400 mt-10 mb-4 font-roboto">Development</h2>
                         <div className="p-4 bg-black/40 font-roboto rounded-lg border border-white/5 text-green-400">
                             <p className="opacity-50 text-xs mb-1"># Clone the repository</p>
-                            <p className="mb-4 text-xs">git clone https://github.com/joel/macos-portfolio.git</p>
+                            <p className="mb-4 text-xs">git clone https://github.com/scar832/Macos_Portfolio.git</p>
                             <p className="opacity-50 text-xs mb-1"># Install dependencies</p>
                             <p className="mb-4 text-xs">npm install</p>
                             <p className="opacity-50 text-xs mb-1"># Launch dev server</p>
@@ -205,7 +205,7 @@ const Vscode = () => {
 
 const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
     <div className={`${nested ? 'ml-3' : ''}`}>
-        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[12.5px] text-white">
+        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[14px] text-white">
             {isOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
             <FolderOpen size={12} className="text-blue-400" />
             <span>{name}</span>
@@ -215,7 +215,7 @@ const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
 );
 
 const File = ({ name, active = false, isFolder = false, isImage = false, isSvg = false, className = "" }) => (
-    <div className={`flex items-center gap-2 px-7 py-0.5 text-[11.5px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
+    <div className={`flex items-center gap-2 px-7 py-0.5 text-[13px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
         {isFolder ? <FolderOpen size={12} className="text-slate-400" /> : <FileText size={12} className={active ? "text-orange-400" : "text-blue-300"} />}
         <span className="truncate">{name}</span>
     </div>

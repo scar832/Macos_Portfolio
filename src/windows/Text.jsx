@@ -152,7 +152,7 @@ const Text = () => {
                     }`}>
                     {/* Optional Image */}
                     {data.image && (
-                        <div className="mb-8 flex justify-center animate-in fade-in zoom-in duration-700">
+                        <div className="mb-8 ml-30 flex justify-self-center animate-in fade-in zoom-in duration-700 bg-black w-80 rounded-2xl">
                             <img
                                 src={data.image}
                                 alt={data.name}

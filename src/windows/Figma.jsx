@@ -16,7 +16,7 @@ const Figma = () => {
 
     const projects = [
         {
-            title: "A Simple Restaurant Website",
+            title: "Simple Restaurant Website",
             category: "Web App",
             year: "2025",
             img: "/images/design4.png",
@@ -99,7 +99,7 @@ const Figma = () => {
     };
 
     return (
-        <div className="flex flex-col h-full select-none font-georama text-[13px] text-white">
+        <div className="flex flex-col h-full select-none font-georama text-[14px] text-white">
             {/* Notification Toast */}
             {notification && (
                 <div className="absolute top-4 right-4 z-50 bg-slate-800 text-white px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
@@ -147,7 +147,7 @@ const Figma = () => {
                             className="flex items-center gap-1 opacity-60 hover:opacity-100 cursor-pointer transition-opacity"
                             onClick={toggleZoomMenu}
                         >
-                            <span className="text-[11px]">{zoom}%</span>
+                            <span className="text-[13px]">{zoom}%</span>
                             <ChevronDown size={12} />
                         </div>
 
@@ -266,7 +266,7 @@ const Figma = () => {
                         {/* Visual Quality Note */}
                         <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
                             <h4 className="text-blue-400 font-bold mb-1">Senior Expertise</h4>
-                            <p className="text-[10px] opacity-70 leading-relaxed font-roboto">
+                            <p className="text-[13px] opacity-70 leading-relaxed font-roboto">
                                 Developed with a focus on atomic design systems and scalable component architecture. Curation of 5+ years of digital product experience.
                             </p>
                         </div>
