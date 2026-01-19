@@ -245,7 +245,7 @@ const WORK_LOCATION = {
     kind: "folder",
     children: [
         // ▶ Project 1
-        
+
 
         // ▶ Project 2
         {

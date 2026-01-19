@@ -20,12 +20,12 @@ const LockScreen = ({ onUnlock }) => {
         const draggable = Draggable.create(el, {
             type: "y",
             bounds: { top: -window.innerHeight, left: 0, height: window.innerHeight * 2, width: window.innerWidth },
-            onDrag: function() {
+            onDrag: function () {
                 // Dim the opacity as the user drags up
                 const progress = Math.abs(this.y) / window.innerHeight;
                 gsap.set(el, { opacity: 1 - progress });
             },
-            onRelease: function() {
+            onRelease: function () {
                 // If dragged more than 200px, unlock. Otherwise, snap back.
                 if (this.y < -200) {
                     gsap.to(el, {
@@ -57,7 +57,7 @@ const LockScreen = ({ onUnlock }) => {
             <div className="flex flex-col items-center gap-2 mt-10">
                 <div className="flex items-center gap-2 text-white/60 mb-2 opacity-50">
                     <Lock size={14} />
-                    <span className="text-xs font-semibold uppercase tracking-widest">Encrypted Session</span>
+                    <span className="text-sm font-semibold uppercase tracking-widest">Encrypted Session</span>
                 </div>
                 <h1 className="text-8xl font-medium text-white/90 tracking-tighter drop-shadow-2xl">
                     {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
@@ -71,7 +71,7 @@ const LockScreen = ({ onUnlock }) => {
             <div className="w-full max-w-md px-6 space-y-6">
                 {/* 1. The Curly Signature */}
                 <div className="text-center animate-in fade-in slide-in-from-bottom-5 duration-1000">
-                    <h2 className="font-['Dancing_Script'] text-4xl text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                    <h2 className="font-['Dancing_Script'] text-5xl text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                         Joel's Portfolio
                     </h2>
                 </div>
@@ -82,10 +82,10 @@ const LockScreen = ({ onUnlock }) => {
                         </div>
                         <div className="flex-1">
                             <div className="flex justify-between items-center">
-                                <span className="text-white font-bold text-sm">Welcome to my portfolio</span>
-                                <span className="text-white/40 text-[10px]">Just now</span>
+                                <span className="text-white font-bold text-[16]">Welcome to my portfolio</span>
+                                <span className="text-white/90 text-[12px]">Just now</span>
                             </div>
-                            <p className="text-white/70 text-xs mt-1">System ready. All tech stacks have been deployed successfully. Explore...</p>
+                            <p className="text-white/70 text-sm mt-1">System ready. All tech stacks have been deployed successfully. Explore...</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ const LockScreen = ({ onUnlock }) => {
                 <div className="flex flex-col items-center gap-4">
                     <div className="flex flex-col items-center gap-1 animate-bounce opacity-50">
                         <ChevronUp size={20} className="text-white" />
-                        <span className="text-[10px] text-white font-bold uppercase tracking-[0.2em]">Swipe Up To Open</span>
+                        <span className="text-[12px] text-white font-bold uppercase tracking-[0.2em]">Swipe Up To Open</span>
                     </div>
                     {/* Home Indicator */}
                     <div className="w-36 h-1.5 bg-white/30 rounded-full" />

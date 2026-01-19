@@ -1,5 +1,5 @@
 import { Navbar, Welcome, Dock, LockScreen } from "#components";
-import { Figma, Finder, Resume, Safari, Terminal, Vscode, Text, Image, Contact } from "#windows";
+import { Figma, Finder, Resume, Safari, Terminal, Vscode, Text, Image, Contact, Gallery } from "#windows";
 import { useState } from "react";
 
 import gsap from "gsap";
@@ -23,6 +23,7 @@ const App = () => {
             <Text />
             <Image />
             <Contact />
+            <Gallery />
             {isLocked && <LockScreen onUnlock={() => setIsLocked(false)} />}
         </main>
     )
