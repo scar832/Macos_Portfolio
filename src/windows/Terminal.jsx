@@ -39,7 +39,7 @@ const Terminal = ({ isOpen }) => {
 
             <div className="terminal-header">
                 <WindowControls target="terminal" />
-                <div className="flex-1 text-center text-[11px] font-medium text-white/40 tracking-wide uppercase">
+                <div className="flex-1 text-center text-[12px] font-medium text-white/90 tracking-wide uppercase">
                     zsh — 80x24
                 </div>
             </div>
@@ -86,7 +86,7 @@ const Terminal = ({ isOpen }) => {
                     {visibleLines === techStack.length && (
                         <div className="pt-4 border-t border-white/10 mt-4 animate-in fade-in zoom-in duration-500">
                             <div className="footnote pb-3">
-                                <p className="flex items-center gap-1.5 text-[12px] text-green-400">
+                                <p className="flex items-center gap-1.5 text-[13px] text-green-400">
                                     <Check size={16} /> {techStack.length} of {techStack.length} stacks loaded successfully
                                 </p>
                                 <p className="text-white/60 flex items-center gap-3 text-[12px] mt-1">
@@ -94,7 +94,7 @@ const Terminal = ({ isOpen }) => {
                                     Render time: 6ms
                                 </p>
                             </div>
-                            <div className="flex items-center gap-3 text-[10px] text-slate-500 uppercase tracking-widest">
+                            <div className="flex items-center gap-3 text-[10px] text-white uppercase tracking-widest">
                                 <div className="size-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
                                 Process Complete — 100% Signal
                             </div>
@@ -103,18 +103,18 @@ const Terminal = ({ isOpen }) => {
 
                     {visibleLines === techStack.length && (
                         <div className="mt-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                            <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-3">
+                            <p className="text-[12px] text-black uppercase tracking-widest mb-3">
                                 Environment Assets:
                             </p>
                             <div className="flex flex-wrap gap-4 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
                                 {techStack.flatMap(stack => stack.items).map((item, index) => (
                                     <div key={index} className="group relative">
                                         {/* Icon Container */}
-                                        <div className="size-9 flex-center bg-white/10 rounded-lg border border-white/10 hover:bg-white/20 hover:border-white/40 transition-all duration-300">
+                                        <div className="size-9.5 flex-center bg-white/10 rounded-lg border border-white/10 hover:bg-white/20 hover:border-white/40 transition-all duration-300">
 
                                             <img
                                                 src={`/icons/tech/${item.toLowerCase().replace(/[ (.,)]/g, '')}.png`}
-                                                className="size-6 object-contain opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"
+                                                className="size-7 object-contain opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all"
                                                 alt={item}
                                                 onError={(e) => { e.target.src = "/icons/tech/default.svg"; }} // Fallback
                                             />

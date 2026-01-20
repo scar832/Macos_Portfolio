@@ -11,6 +11,7 @@ body {
     background-image: url("/images/wallpaper3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+
     background-position: center;
 }
 
@@ -320,7 +321,7 @@ body {
 
     #terminal {
         @apply w-2xl absolute top-32 left-1/12 overflow-hidden rounded-xl;
-        @apply bg-slate-950/25 backdrop-blur-3xl backdrop-saturate-150;
+        @apply bg-slate-950/35 backdrop-blur-3xl backdrop-saturate-150;
         /* Darker glass for better contrast */
         @apply border border-white/20 shadow-2xl;
 
