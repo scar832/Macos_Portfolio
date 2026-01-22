@@ -1,17 +1,17 @@
-import {useRef} from "react";
+import { useRef } from "react";
 import { Tooltip } from "react-tooltip";
 import { dockApps } from "#constants";
-import {useGSAP} from "@gsap/react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import useWindowStore from "#store/window.js";
 
 const Dock = () => {
-    const { openWindow, closeWindow, windows} = useWindowStore();
+    const { openWindow, closeWindow, windows } = useWindowStore();
     const dockRef = useRef(null);
 
     useGSAP(() => {
         const dock = dockRef.current;
-        if(!dock) return;
+        if (!dock) return;
 
         const icons = dock.querySelectorAll(".dock-icon");
 
@@ -48,30 +48,29 @@ const Dock = () => {
         dock.addEventListener('mouseleave', resetIcons);
 
         return () => {
-            dock.addEventListener('mousemove', handleMouseMove);
-            dock.addEventListener('mouseleave', resetIcons);
+            dock.removeEventListener('mousemove', handleMouseMove);
+            dock.removeEventListener('mouseleave', resetIcons);
         }
     }, [])
 
 
     const toggleApp = (app) => {
-        if(!app.canOpen) return;
+        if (!app.canOpen) return;
 
         const window = windows[app.id];
 
-        if(!window) {
+        if (!window) {
             console.error(`Window not found for app: ${app.id}`);
             return;
         }
 
-        if(window.isOpen) {
+        if (window.isOpen) {
             closeWindow(app.id);
         } else {
             openWindow(app.id);
         }
-
-        console.log(windows);
     };
+
 
     return (
         <section id="dock">
@@ -82,10 +81,10 @@ const Dock = () => {
                             type="button"
                             className="dock-icon"
                             aria-label={name}
-                            data-tooltip-id={name}
-                            data-tooltip-delay-show={150}
+                            data-tooltip-id="dock-tooltip"
+                            data-tooltip-content={name}
                             disabled={!canOpen}
-                            onClick={() => toggleApp({ id, canOpen})}
+                            onClick={() => toggleApp({ id, canOpen })}
                         >
                             <img
                                 src={`/images/${icon}`}

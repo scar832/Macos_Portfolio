@@ -244,16 +244,13 @@ const WORK_LOCATION = {
     icon: "/icons/work.svg",
     kind: "folder",
     children: [
-        // ▶ Project 1
-
-
-        // ▶ Project 2
+        // ▶ Project 7
         {
-            id: 7,
+            id: 8,
             name: "Online Music WebApp",
             icon: "/images/folder.png",
             kind: "folder",
-            position: "top-10 left-80",
+            position: "top-5 left-20",
             windowPosition: "top-[33vh] left-7",
             children: [
                 {
@@ -349,6 +346,63 @@ const WORK_LOCATION = {
                     fileType: "img",
                     position: "top-52 left-80",
                     imageUrl: "/images/project-5.png",
+                },
+            ],
+        },
+
+        // ▶ Project 6
+        {
+            id: 7,
+            name: "Simple Construction Website",
+            icon: "/images/folder.png",
+            kind: "folder",
+            position: "top-10 left-80",
+            windowPosition: "top-[15vh] left-17",
+            children: [
+                {
+                    id: 1,
+                    name: "Sehadi.txt",
+                    icon: "/images/txt.png",
+                    kind: "file",
+                    fileType: "txt",
+                    position: "top-5 left-15",
+                    image: "/images/sehadi-white.png",
+                    description: [
+                        "The Music Stream App is a fast and convenient way to explore songs from a vast stock music library.",
+                        "Instead of searching file stores or multiple sites, you can browse genres, and stream tracks in real time.",
+                        "Think of it like having a professional music studio in your browser—ready to play high-quality, royalty-free music anytime, anywhere.",
+                        "It's built with a React frontend and a Python backend, using APIs to pull data from our stock music files seamlessly.",
+
+                        "📂Built With just",
+                        "├──HTML + CSS + Javascript",
+                    ],
+                },
+                {
+                    id: 2,
+                    name: "sehadi.vercel.app/",
+                    icon: "/images/safari.png",
+                    kind: "file",
+                    fileType: "url",
+                    href: "https://construction-site-phi.vercel.app/",
+                    position: "top-10 right-20",
+                },
+                {
+                    id: 4,
+                    name: "sehadi.app.png",
+                    icon: "/images/image.png",
+                    kind: "file",
+                    fileType: "img",
+                    position: "top-50 right-80",
+                    imageUrl: "/images/sehadi-shot.png",
+                },
+                {
+                    id: 5,
+                    name: "Design.fig",
+                    icon: "/images/plain.png",
+                    kind: "file",
+                    fileType: "fig",
+                    href: "https://www.figma.com",
+                    position: "top-55 right-20",
                 },
             ],
         },

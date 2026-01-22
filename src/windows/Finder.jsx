@@ -13,7 +13,10 @@ const Finder = () => {
     const openItem = (item) => {
         if (item.fileType === 'pdf') return openWindow("resume");
         if (item.kind === "folder") return setActiveLocation(item);
-        if (['fig', 'url'].includes(item.fileType) && item.href) return window.open(item.href, "_blank");
+        if (['fig', 'url'].includes(item.fileType) && item.href) {
+            window.open(item.href, "_blank", "noopener,noreferrer");
+            return;
+        }
         openWindow(`${item.fileType}${item.kind}`, item);
     };
 
@@ -31,7 +34,7 @@ const Finder = () => {
                         className={clsx(item.id === activeLocation.id ? 'active' : 'not-active')}
                     >
                         <img src={item.icon} className="w-4" alt={item.name} />
-                        <p className="text-sm font-medium truncate">{
+                        <p className="text-[16px] font-medium truncate">{
                             item.name
                         }</p>
                     </li>))}

@@ -29,7 +29,7 @@ const Safari = () => {
             const searchUrl = url.startsWith("http")
                 ? url
                 : `https://www.google.com/search?q=${encodeURIComponent(url)}`;
-            window.open(searchUrl, "_blank");
+            window.open(searchUrl, "_blank", "noopener,noreferrer");
             setUrl("");
         }
     };
@@ -57,7 +57,7 @@ const Safari = () => {
     // New tab functionality
     const handleNewTab = (e) => {
         e.stopPropagation();
-        window.open(window.location.href, "_blank");
+        window.open(window.location.href, "_blank", "noopener,noreferrer");
         setShowTooltip("newtab");
         setTimeout(() => setShowTooltip(null), 2000);
     };
@@ -208,8 +208,8 @@ const Safari = () => {
                                     key={tab.id}
                                     onClick={() => switchTab(tab.id)}
                                     className={`p-3 rounded-lg cursor-pointer transition-all ${activeTab === tab.id
-                                            ? 'bg-blue-100 border border-blue-300'
-                                            : 'bg-slate-50 hover:bg-slate-100 border border-slate-200'
+                                        ? 'bg-blue-100 border border-blue-300'
+                                        : 'bg-slate-50 hover:bg-slate-100 border border-slate-200'
                                         }`}
                                 >
                                     <div className="flex items-start gap-3">

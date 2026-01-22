@@ -38,9 +38,9 @@ const Vscode = () => {
                     <Terminal className="text-white/30 hover:text-white cursor-pointer" />
                     <LayoutGrid size={20} className="text-white/30 hover:text-white cursor-pointer" />
                     <Search size={20} className="text-white/30" />
-                    <GitFork size={20} className="text-white/30"/>
+                    <GitFork size={20} className="text-white/30" />
                     <Play size={20} className="text-white/30" />
-                    {/* Gemini AI Icon */}
+
                     <div className="relative group">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-blue-400 group-hover:text-blue-300 transition-colors">
                             <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor" />
@@ -54,7 +54,7 @@ const Vscode = () => {
                     <div className="flex justify-between items-center px-4 py-2 uppercase text-[9px] font-bold tracking-widest text-white/40">
                         Explorer
                     </div>
-                    <div className="flex items-center gap-1 px-3 py-1 bg-white/5 text-white/90 text-[11px] font-bold">
+                    <div className="flex items-center gap-1 px-3 py-1 bg-white/5 text-white/90 text-[14px] font-bold">
                         <ChevronDown size={14} />
                         <span>MacOs Portfolio</span>
                     </div>
@@ -205,9 +205,9 @@ const Vscode = () => {
 
 const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
     <div className={`${nested ? 'ml-3' : ''}`}>
-        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[14px] text-white">
-            {isOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
-            <FolderOpen size={12} className="text-blue-400" />
+        <div onClick={onToggle} className="flex items-center gap-1 px-3 py-1 hover:bg-white/5 cursor-pointer text-[15px] text-white">
+            {isOpen ? <ChevronDown size={13} /> : <ChevronRight size={13} />}
+            <FolderOpen size={14} className="text-blue-400" />
             <span>{name}</span>
         </div>
         {isOpen && <div>{children}</div>}
@@ -215,8 +215,8 @@ const Folder = ({ name, children, isOpen, onToggle, nested = false }) => (
 );
 
 const File = ({ name, active = false, isFolder = false, isImage = false, isSvg = false, className = "" }) => (
-    <div className={`flex items-center gap-2 px-7 py-0.5 text-[13px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
-        {isFolder ? <FolderOpen size={12} className="text-slate-400" /> : <FileText size={12} className={active ? "text-orange-400" : "text-blue-300"} />}
+    <div className={`flex items-center gap-2 px-7 py-0.5 text-[14px] cursor-pointer hover:bg-white/5 ${active ? 'bg-blue-500/20 text-white' : 'text-white/60'} ${className}`}>
+        {isFolder ? <FolderOpen size={13} className="text-slate-400" /> : <FileText size={13} className={active ? "text-orange-400" : "text-blue-300"} />}
         <span className="truncate">{name}</span>
     </div>
 );
