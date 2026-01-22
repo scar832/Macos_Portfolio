@@ -326,10 +326,10 @@ const WORK_LOCATION = {
                     fileType: "txt",
                     position: "top-5 right-10",
                     description: [
-                        "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-                        "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-                        "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-                        "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+                        "A landing page website for D3vLabs",
+                        "Instead of just listing services, this landing page highlights our websites and software through clean design, smooth navigation, and clear messaging.",
+                        "Think of it like a digital showroom—showcasing our tech stack, projects, and team in a way that builds trust and sparks interest.",
+                        "There are some nice animations in there, so everything feels modern, engaging, and seamless on any device.",
                     ],
                 },
                 {

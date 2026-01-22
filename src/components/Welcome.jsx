@@ -84,7 +84,7 @@ const Welcome = () => {
                 {renderText("portfolio", "text-9xl italic font-georama")}
             </h1>
 
-            <div className="small-screen">
+            <div className="small-screen bg-black">
                 <p>This Portfolio is designed for desktop/tablet screens only.</p>
             </div>
         </section>
